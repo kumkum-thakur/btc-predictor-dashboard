@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block title %}Profile - BTC Forecast{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow fade-in">
+  <h2>👤 Profile: {{ user.name }}</h2>
+  <p>Welcome back, {{ user.name }}!</p>
+  <p><strong>Signup Date:</strong> {{ user.created_at.strftime('%Y-%m-%d') }}</p>
+  <p><strong>Total Forecasts:</strong> {{ user.forecast_count }}</p>
+
+  <!-- Logout Button -->
+  <div class="d-flex gap-2 my-3">
+    <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">Logout</a>
+  </div>
+
+  <!-- Insight Box -->
+  <div class="alert alert-info mt-3">
+    📊 <strong>You've made {{ user.forecast_count }} forecasts</strong> so far!
+    {% if forecasts %}
+      Your last forecast was on <strong>{{ forecasts[0].timestamp.strftime('%b %d, %Y %H:%M') }}</strong>.
+    {% endif %}
+  </div>
+
+  <!-- Smart Navigation -->
+  <div class="d-flex gap-2 my-2">
+    <a href="{{ url_for('models') }}" class="btn btn-sm btn-outline-primary">Compare Forecast Models</a>
+  </div>
+
+  <!-- Forecast Section -->
+  <h3 class="mt-4">📝 Recent Forecasts</h3>
+  {% if forecasts %}
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover mt-3">
+        <thead class="table-dark">
+          <tr>
+            <th>Date</th>
+            <th>Model</th>
+            <th>Range</th>
+            <th>Currency</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for f in forecasts %}
+          <tr>
+            <td>{{ f.timestamp.strftime('%b %d, %Y %H:%M') }}</td>
+            <td><span class="badge bg-info text-dark">{{ f.model.upper() }}</span></td>
+            <td>{{ f.start }} → {{ f.end }}</td>
+            <td>{{ f.currency }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p class="text-muted mt-2"><small>All times shown in IST (UTC+5:30)</small></p>
+    </div>
+  {% else %}
+    <p class="text-muted mt-2">No forecasts yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

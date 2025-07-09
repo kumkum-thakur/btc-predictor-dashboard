@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block title %}Explore - BTC Forecast{% endblock %}
+{% block content %}
+<section class="text-center animate__animated animate__fadeInDown">
+  <h1 class="display-5 fw-bold text-success">Explore Bitcoin Trends</h1>
+  <p class="lead" style="color: inherit;">Dig deeper into market patterns, history, and possibilities.</p>
+</section>
+
+<div class="row mt-5">
+  <div class="col-md-6">
+    <div class="card h-100 shadow animate__animated animate__fadeInLeft animate__delay-1s">
+      <div class="card-body">
+        <h5 class="card-title">📅 Historical Data Insights</h5>
+        <p class="card-text">Use our tool to fetch and visualize historical Bitcoin data across various date ranges and currencies. Understand how prices have evolved over time.</p>
+        <a href="/models" class="btn btn-outline-success">Launch Tool</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card h-100 shadow animate__animated animate__fadeInRight animate__delay-2s">
+      <div class="card-body">
+        <h5 class="card-title">📈 Model Comparison</h5>
+        <p class="card-text">Compare ARIMA and LSTM predictions, analyze error rates, and decide which model suits your forecasting needs.</p>
+        <p style="color: #cccccc; font-style: italic;">
+          📌 LSTM generally provides more accurate forecasts for volatile markets like Bitcoin.
+        </p>
+        <a href="/models" class="btn btn-outline-success">Compare Models</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-md-12">
+    <div class="card shadow-sm animate__animated animate__fadeInUp animate__delay-3s">
+      <div class="card-body">
+        <h5 class="card-title">🔮 Future Plans</h5>
+        <p class="card-text">I am working to integrate sentiment analysis, news overlays, and downloadable reports in future versions to make forecasting even more insightful.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center mt-5 animate__animated animate__fadeInUp animate__delay-4s">
+  <a href="/about" class="btn btn-outline-dark btn-lg">Learn More About the Project</a>
+</div>
+{% endblock %}

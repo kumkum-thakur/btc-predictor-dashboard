@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}About | BTC Forecast{% endblock %}
+
+{% block content %}
+<div class="text-center my-5">
+  <h1 class="display-4 fw-bold animate__animated animate__fadeInDown text-primary">📘 About BTC Forecast</h1>
+  <p class="lead animate__animated animate__fadeInUp text-secondary">Empowering users with smart predictions and real-time Bitcoin insights.</p>
+</div>
+
+<!-- ✅ Vision & Mission Section -->
+<div class="row text-center mb-5">
+  <div class="col-md-6 mb-4">
+    <div class="card-box shadow animate__animated animate__fadeInLeft">
+      <div class="card-body">
+        <h4 class="card-title text-primary">🎯 My Mission</h4>
+        <p class="card-text">To make cryptocurrency forecasting accessible and accurate using modern AI techniques like LSTM and ARIMA.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card-box shadow animate__animated animate__fadeInRight">
+      <div class="card-body">
+        <h4 class="card-title text-primary">🌟 My Vision</h4>
+        <p class="card-text">A one-stop platform for Bitcoin enthusiasts to analyze trends, make informed decisions, and learn predictive modeling.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Creator / Developer Section -->
+<div class="card-box shadow p-4 animate__animated animate__fadeInUp">
+  <div class="row g-0 align-items-center">
+    <div class="col-md-4 text-center">
+      <img src="{{ url_for('static', filename='assets/female-dev.svg') }}" class="img-fluid p-3" style="max-width: 200px;" alt="Creator">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title text-primary">👩‍💻 Created by Kumkum</h3>
+        <p class="card-text">Hey there! I’m Kumkum, a tech enthusiast with a passion for AI, Data Science, and forecasting models. This project was born from my love for building real-world solutions that combine data science, finance, and user-centric design.</p>
+        <p class="card-text"><small class="tech-stack-note">Project powered by Python, Flask, TensorFlow, Plotly, ARIMA.</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Call to Action -->
+<div class="text-center mt-5 animate__animated animate__fadeIn">
+  <h4 class="mb-3 text-secondary">Want to explore forecasts or try the models?</h4>
+  <a href="/explore" class="btn btn-primary btn-lg me-3">🔍 Explore Forecasts</a>
+  <a href="/models" class="btn btn-outline-secondary btn-lg">⚙️ Try Models</a>
+</div>
+{% endblock %}

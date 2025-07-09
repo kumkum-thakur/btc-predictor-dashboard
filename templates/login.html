@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block title %}Login - BTC Forecast{% endblock %}
+
+{% block content %}
+<div class="container py-5 animate__animated animate__fadeIn">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h3 class="text-center text-primary mb-4">🔐 Login to Your Account</h3>
+
+          {% if error %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endif %}
+
+          <form method="POST" action="/login">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+
+          <div class="text-center mt-3">
+            <p class="text-muted">Don't have an account? <a href="/signup">Sign Up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

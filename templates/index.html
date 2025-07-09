@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+{% block title %}Home | BTC Forecast{% endblock %}
+
+{% block content %}
+
+<!-- Live BTC Ticker -->
+<div class="text-center mt-4">
+  <h5 id="btc-ticker" class="fw-semibold text-light animate__animated animate__fadeInDown"></h5>
+</div>
+
+<style>
+  .card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-glow {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .btn-glow:hover {
+    background-color: #34d058;
+    box-shadow: 0 0 25px rgba(40, 167, 69, 0.8);
+  }
+</style>
+
+<!-- BTC Ticker Script -->
+<script>
+  async function updateTicker() {
+    try {
+      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+      const data = await res.json();
+      const price = data.bitcoin.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+      document.getElementById('btc-ticker').innerText = `🌐 Live BTC Price: ${price}`;
+    } catch (e) {
+      console.error('Ticker error', e);
+    }
+  }
+  setInterval(updateTicker, 60000);
+  document.addEventListener('DOMContentLoaded', updateTicker);
+</script>
+
+<!-- Hero Section -->
+<div class="text-center my-5 animate__animated animate__fadeIn">
+  <h1 class="display-4 fw-bold text-success">🚀 Welcome to BTC Forecast</h1>
+  <p class="lead text-light">
+    Unlock the future of Bitcoin with AI-driven insights and market trend analysis.
+  </p>
+  <a href="/models" class="btn btn-glow mt-3">⚙️ Start Forecasting</a>
+</div>
+
+<!-- Features Grid -->
+<div class="row text-center mb-5">
+  <div class="col-md-4 mb-4">
+    <div class="card shadow h-100 animate__animated animate__fadeInLeft">
+      <div class="card-body">
+        <h4 class="card-title text-success">📈 Daily Predictions</h4>
+        <p class="card-text">AI-powered 1-day forecasts using LSTM and ARIMA. Stay ahead of the curve.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card shadow h-100 animate__animated animate__fadeInUp">
+      <div class="card-body">
+        <h4 class="card-title text-success">🧠 Machine Learning Insights</h4>
+        <p class="card-text">Models trained on real Bitcoin market data to give smarter predictions.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card shadow h-100 animate__animated animate__fadeInRight">
+      <div class="card-body">
+        <h4 class="card-title text-success">📰 Trending BTC News</h4>
+        <p class="card-text">Real-time crypto headlines and sentiment analysis (Coming Soon).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
