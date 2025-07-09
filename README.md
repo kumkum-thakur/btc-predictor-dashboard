@@ -32,3 +32,4 @@ A machine learning-powered web application that predicts the future price of Bit
    ```bash
    git clone https://github.com/kumkum-thakur/btc-predictor-dashboard.git
    cd btc-predictor-dashboard
+"# Re-deploy trigger" 
